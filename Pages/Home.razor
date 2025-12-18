@@ -1,7 +1,58 @@
 ﻿@page "/"
+@using RoadMap
 
-<PageTitle>Home</PageTitle>
+<PageTitle>RoadMap</PageTitle>
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
+<div class="roadmap-container">
+    <header class="roadmap-header">
+        <h1>Game Development Roadmap</h1>
+        <p>
+            Esta página lista jogos organizados como referência de estudo.
+            Cada jogo apresenta seus gêneros e objetivos principais.
+        </p>
+    </header>
+
+    @if (GamesList.Games == null || GamesList.Games.Count == 0)
+    {
+        <div class="empty-state">
+            <p>Nenhum jogo disponível.</p>
+        </div>
+    }
+    else
+    {
+        <div class="games-grid">
+            @foreach (var game in GamesList.Games)
+            {
+                <article class="game-card">
+                    <div class="card-header">
+                        <h2>@game.Name</h2>
+                        <a href="@game.Repository">Ver exemplo (MonoGame)</a>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="section-genres">
+                            <h3>Gêneros</h3>
+                            <ul class="genre-tags">
+                                @foreach (var genre in game.Genres)
+                                {
+                                    <li>@genre</li>
+                                }
+                            </ul>
+                        </div>
+
+                        <div class="section-objectives">
+                            <h3>Objetivos</h3>
+                            <ul class="objective-list">
+                                @foreach (var objective in game.Objectives)
+                                {
+                                    <li>@objective</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            }
+        </div>
+    }
+</div>

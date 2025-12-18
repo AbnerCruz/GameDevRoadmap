@@ -1,0 +1,149 @@
+/* ================================
+   CONTAINER & LAYOUT
+   ================================ */
+.roadmap-container {
+    width: 100%;
+    max-width: 1200px;
+    /* Limita a largura em telas ultra-wide */
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.roadmap-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--color-primary-translucent-2);
+    padding-bottom: 1rem;
+}
+
+/* ================================
+   GRID SYSTEM (Mobile First)
+   ================================ */
+.games-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Em telas maiores (Tablets/Desktop), vira um Grid de 2 colunas */
+@media (min-width: 768px) {
+    .games-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+}
+
+/* ================================
+   GAME CARD
+   ================================ */
+.game-card {
+    background: var(--color-primary-translucent-1);
+    border: 1px solid var(--color-primary-translucent-2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-2);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+
+    /* Layout interno do card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.game-card:hover {
+    border-color: var(--color-gold-3);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-1);
+    background: var(--color-primary-translucent-2);
+}
+
+.card-header h2 {
+    font-size: 1.75rem;
+    /* Um pouco menor que o H2 global para caber no card */
+    color: var(--color-gold-2);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-primary-translucent-2);
+}
+
+.card-body h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-black-4);
+    /* Cor mais discreta para subtítulos */
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ================================
+   GENRE TAGS (Chips)
+   ================================ */
+.genre-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.genre-tags li {
+    font-size: 0.85rem;
+    background: var(--color-blue-1);
+    /* Fundo azul escuro */
+    color: var(--color-blue-4);
+    /* Texto azul claro */
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid var(--color-blue-2);
+    margin: 0;
+    /* Remove margem global do li */
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* ================================
+   OBJECTIVES LIST
+   ================================ */
+.objective-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.objective-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    /* Levemente menor que o corpo global para caber no card */
+    color: var(--text-color-1);
+    line-height: 1.4;
+    text-align: left;
+    /* Garante alinhamento à esquerda dentro do card */
+}
+
+/* Ícone de check personalizado usando CSS puro */
+.objective-list li::before {
+    content: "▹";
+    /* Seta geométrica */
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-green-2);
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 1.2;
+}
+
+/* ================================
+   EMPTY STATE
+   ================================ */
+.empty-state {
+    text-align: center;
+    padding: 4rem 1rem;
+    border: 2px dashed var(--color-black-3);
+    border-radius: 12px;
+    color: var(--color-black-4);
+}
